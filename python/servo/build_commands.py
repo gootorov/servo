@@ -432,7 +432,7 @@ class MachCommands(CommandBase):
             # Unlike RUSTFLAGS, these are only passed in the final rustc invocation
             # so that `./mach build` followed by `./mach build-cef` both build
             # common dependencies with the same flags.
-            opts += ["--", "-C", "link-args=-Xlinker -undefined -Xlinker dynamic_lookup"]
+            opts += ["--", "-Clink-args=-Xlinker -undefined -Xlinker dynamic_lookup"]
 
         ret = self.call_rustup_run(["cargo", "rustc"] + opts, env=env, verbose=verbose)
         elapsed = time() - build_start
